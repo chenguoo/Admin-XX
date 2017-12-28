@@ -30,7 +30,7 @@ public class FreemarkerConfig {
         configurer.setFreemarkerVariables(variables);
 
         Properties settings = new Properties();
-//        settings.setProperty("default_encoding", "utf-8");
+        settings.setProperty("default_encoding", "utf-8");
         settings.setProperty("number_format", "0.##");
         configurer.setFreemarkerSettings(settings);
 

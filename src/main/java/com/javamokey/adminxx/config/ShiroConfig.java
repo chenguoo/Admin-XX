@@ -1,5 +1,7 @@
-package com.javamokey.adminxx.modules.sys.shiro;
+package com.javamokey.adminxx.config;
 
+import com.javamokey.adminxx.modules.sys.shiro.RedisShiroSessionDAO;
+import com.javamokey.adminxx.modules.sys.shiro.UserRealm;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.session.mgt.SessionManager;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
@@ -21,7 +23,7 @@ import java.util.Map;
  * @author Cheney
  *
  */
-//@Configuration
+@Configuration
 public class ShiroConfig {
 
     @Bean("sessionManager")
@@ -56,7 +58,7 @@ public class ShiroConfig {
         ShiroFilterFactoryBean shiroFilter = new ShiroFilterFactoryBean();
         shiroFilter.setSecurityManager(securityManager);
         shiroFilter.setLoginUrl("/login.html");
-        shiroFilter.setUnauthorizedUrl("/");
+        shiroFilter.setUnauthorizedUrl("/500.html");
 
         Map<String, String> filterMap = new LinkedHashMap<>();
         filterMap.put("/static/**", "anon");
