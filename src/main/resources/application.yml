@@ -35,7 +35,7 @@ spring:
 # Mybatis配置
 mybatis:
     configLocation: classpath:mybatis.xml
-    mapperLocations: classpath:com/javamokey/modules/*/mapper/*.xml
+    mapperLocations: classpath:com/javamokey/adminxx/modules/*/mapper/*.xml
 
 renren:
     redis:
