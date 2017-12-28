@@ -27,12 +27,14 @@ public class MpGenerator {
     public static void main(String[] args) {
         String packageName = "com.javamokey.adminxx.modules";
         String module = "sys";
-        generateByTables(packageName, module, "sys_user_info");
+        String[] entity = {"sys_config","sys_dept","sys_log","sys_menu",
+                   "sys_oss","sys_role","sys_role_dept","sys_role_menu","sys_user","sys_user_role"};
+        generateByTables(packageName, module, entity);
     }
 
     private static void generateByTables(String packageName, String module, String... tableNames) {
 
-        String dbUrl = "jdbc:mysql://localhost:3306/mybatis-plus";
+        String dbUrl = "jdbc:mysql://localhost:3306/renren_security";
 
         // 全局配置
         GlobalConfig config = new GlobalConfig();
@@ -42,6 +44,7 @@ public class MpGenerator {
                 .setBaseResultMap(true)// XML ResultMap
                 .setOutputDir("d:\\mybatis-plus")
                 .setFileOverride(true)
+                .setBaseColumnList(true)
                 .setServiceName("%sService");
 
         // 数据源配置
