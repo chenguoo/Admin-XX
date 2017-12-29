@@ -49,37 +49,4 @@ public class MybatisPlusConfig {
         return paginationInterceptor;
     }
 
-    @Bean
-    public SqlSessionFactory sqlSessionFactory(DataSource dataSource,PaginationInterceptor paginationInterceptor,GlobalConfiguration globalConfiguration) throws Exception {
-        MybatisSqlSessionFactoryBean sqlSessionFactory = new MybatisSqlSessionFactoryBean();
-        sqlSessionFactory.setDataSource(dataSource);
-//        sqlSessionFactory.setConfigLocation(resourceLoader.getResource("classpath:mybatis-config.xml"));
-//        sqlSessionFactory.setTypeAliasesPackage("com.baomidou.mybatisplus.test.h2.entity.persistent");
-//        MybatisConfiguration configuration = new MybatisConfiguration();
-//        configuration.setDefaultScriptingLanguage(MybatisXMLLanguageDriver.class);
-//        org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
-//        configuration.setJdbcTypeForNull(JdbcType.NULL);
-//        configuration.setMapUnderscoreToCamelCase(true);
-//        sqlSessionFactory.setConfiguration(configuration);
-        OptimisticLockerInterceptor optLock = new OptimisticLockerInterceptor();
-        sqlSessionFactory.setPlugins(new Interceptor[]{
-                paginationInterceptor,
-                optLock,
-                new PerformanceInterceptor()
-        });
-//        globalConfiguration.setMetaObjectHandler(new H2MetaObjectHandler());
-        sqlSessionFactory.setGlobalConfig(globalConfiguration);
-        return sqlSessionFactory.getObject();
-    }
-
-    @Bean
-    public GlobalConfiguration globalConfiguration() {
-        GlobalConfiguration conf = new GlobalConfiguration(new LogicSqlInjector());
-        conf.setLogicDeleteValue("-1");
-        conf.setLogicNotDeleteValue("1");
-        conf.setDbColumnUnderline(true);//全局表为下划线命名设置 true
-        conf.setIdType(2);
-        return conf;
-    }
-
 }

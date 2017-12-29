@@ -15,7 +15,7 @@ import javax.servlet.DispatcherType;
  * @email sunlightcs@gmail.com
  * @date 2017-04-21 21:56
  */
-//@Configuration
+@Configuration
 public class FilterConfig {
 
     @Bean

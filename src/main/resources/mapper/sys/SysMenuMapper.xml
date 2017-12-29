@@ -19,4 +19,8 @@
         menu_id, parent_id, name, url, perms, type, icon, order_num
     </sql>
 
+    <select id="queryListParentId" resultType="com.javamokey.adminxx.modules.sys.entity.SysMenu">
+        select * from sys_menu where parent_id = #{parentId} order by order_num asc
+    </select>
+
 </mapper>

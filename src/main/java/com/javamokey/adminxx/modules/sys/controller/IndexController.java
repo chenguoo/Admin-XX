@@ -35,9 +35,9 @@ public class IndexController {
      *
      * @return
      */
-    @RequestMapping("/")
+    @RequestMapping("/index")
     public String index() {
-
+        //其他非系统级的初始化...
 
         return "index";
     }

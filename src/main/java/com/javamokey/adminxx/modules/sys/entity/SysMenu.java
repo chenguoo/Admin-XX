@@ -3,6 +3,7 @@ package com.javamokey.adminxx.modules.sys.entity;
 import com.baomidou.mybatisplus.enums.IdType;
 import com.baomidou.mybatisplus.annotations.TableId;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * <p>
@@ -46,6 +47,18 @@ public class SysMenu implements Serializable {
      * 排序
      */
 	private Integer orderNum;
+
+	/**
+	 * 父菜单名称
+	 */
+	private String parentName;
+	/**
+	 * ztree属性
+	 */
+	private Boolean open;
+
+
+	private List<?> list;
 
 
 	public Long getMenuId() {
@@ -112,6 +125,31 @@ public class SysMenu implements Serializable {
 		this.orderNum = orderNum;
 	}
 
+
+
+	public List<?> getList() {
+		return list;
+	}
+
+	public void setList(List<?> list) {
+		this.list = list;
+	}
+
+	public String getParentName() {
+		return parentName;
+	}
+
+	public void setParentName(String parentName) {
+		this.parentName = parentName;
+	}
+
+	public Boolean getOpen() {
+		return open;
+	}
+
+	public void setOpen(Boolean open) {
+		this.open = open;
+	}
 	@Override
 	public String toString() {
 		return "SysMenu{" +
