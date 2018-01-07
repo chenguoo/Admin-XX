@@ -95,9 +95,7 @@
                 this.src = "captcha.jpg?t=" + $.now();
             },
             login: function (event) {
-                console.info("login...");
                 var data = "username="+vm.username+"&password="+vm.password+"&captcha="+vm.captcha;
-                console.info(data);
                 $.ajax({
                     type: "POST",
                     url: "login",
@@ -105,7 +103,7 @@
                     dataType: "json",
                     success: function(result){
                         if(result.code == 0){//登录成功
-                            parent.location.href ='index';
+                            parent.location.href ='/';
                         }else{
                             vm.error = true;
                             vm.errorMsg = result.msg;

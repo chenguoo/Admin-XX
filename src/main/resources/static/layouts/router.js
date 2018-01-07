@@ -58,7 +58,6 @@
 	 */
 	Router.prototype.reload = function() {
 		var self = this;
-
 		var hash = window.location.hash.replace('#' + self.key, '');
 		//var addr = hash.split('/')[0];
 		var addr = hash;

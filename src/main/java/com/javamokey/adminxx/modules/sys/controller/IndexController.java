@@ -35,7 +35,7 @@ public class IndexController {
      *
      * @return
      */
-    @RequestMapping("/index")
+    @RequestMapping("/")
     public String index() {
         //其他非系统级的初始化...
 
@@ -87,6 +87,16 @@ public class IndexController {
         return R.ok();
     }
 
+
+    /**
+     * 退出
+     */
+    @GetMapping("logout")
+    public String logout() {
+        ShiroUtils.logout();
+        return "redirect:login";
+    }
+
     /**
      * 生成验证码
      *
@@ -113,5 +123,17 @@ public class IndexController {
     public String unauthorized() {
 
         return "unauthorized";
+    }
+
+    /**
+     * 页面
+     *
+     * @return
+     */
+    @GetMapping("main")
+    public String main() {
+        //init...
+
+        return "main";
     }
 }

@@ -2,18 +2,22 @@
 var menuItem = Vue.extend({
 	name: 'menu-item',
 	props:{item:{}},
-	template:[
-		'<li>',
-		'	<a v-if="item.type === 0" href="javascript:;">',
-		'		<i v-if="item.icon != null" :class="item.icon"></i>',
-		'		<span>{{item.name}}</span>',
-		'		<i class="fa fa-angle-left pull-right"></i>',
-		'	</a>',
-		'	<ul v-if="item.type === 0" class="treeview-menu">',
-		'		<menu-item :item="item" v-for="item in item.list"></menu-item>',
-		'	</ul>',
-		'	<a v-if="item.type === 1" :href="\'#\'+item.url"><i v-if="item.icon != null" :class="item.icon"></i><i v-else class="fa fa-circle-o"></i> {{item.name}}</a>',
-		'</li>'
+    template:[
+    		'<li v-if="item.type == 0" class="treeview">',
+			'  <a href="javascript:;">',
+			'    <i v-if="item.icon != null" :class="item.icon"></i>',
+			'    <span>{{item.name}}</span>',
+			'    <span class="pull-right-container">',
+			'      <i class="fa fa-angle-left pull-right"></i>',
+			'    </span>',
+			'  </a>',
+			'  <ul class="treeview-menu">',
+			'    <menu-item :item="item" v-for="item in item.list"></menu-item>',
+			'  </ul>',
+            '</li>',
+			'<li v-else-if="item.type === 1">',
+            '  <a :href="\'#\'+item.url"><i v-if="item.icon != null" :class="item.icon"></i><i v-else class="fa fa-circle-o"></i><span> {{item.name}}</span></a>',
+            '</li>',
 	].join('')
 });
 
@@ -30,7 +34,7 @@ $(window).on('resize', function() {
 Vue.component('menuItem',menuItem);
 
 var vm = new Vue({
-	el:'#rrapp',
+	el:'#adminApp',
 	data:{
 		user:{},
 		menuList:{},
@@ -79,17 +83,7 @@ var vm = new Vue({
 					});
 	            }
 			});
-		},
-        donate: function () {
-            layer.open({
-                type: 2,
-                title: false,
-                area: ['806px', '467px'],
-                closeBtn: 1,
-                shadeClose: false,
-                content: ['http://cdn.renren.io/donate.jpg', 'no']
-            });
-        }
+		}
 	},
 	created: function(){
 		this.getMenuList();
@@ -111,12 +105,18 @@ function routerList(router, menuList){
 		if(menu.type == 0){
 			routerList(router, menu.list);
 		}else if(menu.type == 1){
+			/*
+			debugger;
+			console.info(menu.url);
+            console.info(window.location.hash);
+            console.info(vm.navTitle);
+			 */
 			router.add('#'+menu.url, function() {
 				var url = window.location.hash;
 				
 				//替换iframe的url
 			    vm.main = url.replace('#', '');
-			    
+			    // debugger;
 			    //导航菜单展开
 			    $(".treeview-menu li").removeClass("active");
 			    $("a[href='"+url+"']").parents("li").addClass("active");
