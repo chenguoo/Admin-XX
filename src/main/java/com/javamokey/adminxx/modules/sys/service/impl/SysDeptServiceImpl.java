@@ -20,22 +20,28 @@ import java.util.List;
 @Service
 public class SysDeptServiceImpl extends ServiceImpl<SysDeptMapper, SysDept> implements SysDeptService {
 
-    private SysDeptMapper sysDeptDao;
+    private SysDeptMapper sysDeptMapper;
 
-    public SysDeptServiceImpl(SysDeptMapper sysDeptDao) {
-        this.sysDeptDao = sysDeptDao;
+    public SysDeptServiceImpl(SysDeptMapper sysDeptMapper) {
+        this.sysDeptMapper = sysDeptMapper;
     }
 
     @Override
     public SysDept selectById(Long deptId) {
 
-        return sysDeptDao.selectById(deptId);
+        return sysDeptMapper.selectById(deptId);
+    }
+
+    @Override
+    public SysDeptVo selectSysDeptVoById(Long deptId) {
+        
+        return sysDeptMapper.selectSysDeptVoById(deptId);
     }
 
     @Override
     public List<SysDeptVo> querySysDeptVoList(SysDeptVo sysDeptVo) {
 
-        return sysDeptDao.querySysDeptVoList(sysDeptVo);
+        return sysDeptMapper.querySysDeptVoList(sysDeptVo);
     }
 
 

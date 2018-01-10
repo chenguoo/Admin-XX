@@ -22,7 +22,9 @@ public class SysMenuVo extends SysMenu {
      */
     private Boolean open;
 
-
+    /**
+     * 子菜单
+     */
     private List<?> list;
 
 

@@ -22,19 +22,24 @@
         from sys_dept d
         <where>
             <if test="parentId != null">
-                d.parent_id = #{parentId}
+                and d.parent_id = #{parentId}
             </if>
             <if test="name != null">
-                d.name = #{name}
+                and d.name = #{name}
             </if>
             <if test="delFlag != null">
-                d.del_flag = #{delFlag}
+                and d.del_flag = #{delFlag}
             </if>
             <if test="delFlag == null">
-                d.del_flag = '0'
+                and d.del_flag = '0'
             </if>
         </where>
         order by d.order_num asc
+    </select>
+    <select id="selectSysDeptVoById" resultType="com.javamokey.adminxx.modules.sys.entity.vo.SysDeptVo">
+        select d.*,(select p.name from sys_dept p where p.dept_id = d.parent_id) as parentName
+          from sys_dept d
+         where dept_id = #{deptId}
     </select>
 
 

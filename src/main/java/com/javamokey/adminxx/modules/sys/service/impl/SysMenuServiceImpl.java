@@ -74,7 +74,11 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
     @Override
     public List<SysMenuVo> queryListParentId(Long parentId) {
         return sysMenuMapper.queryListParentId(parentId);
+    }
 
+    @Override
+    public List<SysMenuVo> queryList() {
+        return sysMenuMapper.queryList();
     }
 
     /**
@@ -92,4 +96,5 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
 
         return subMenuList;
     }
+
 }

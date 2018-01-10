@@ -12,9 +12,14 @@ import com.javamokey.adminxx.modules.sys.entity.SysDept;
  */
 public class SysDeptVo extends SysDept{
 
-    //上级部门名称
+    /**
+     * 上级部门名称
+     */
     private String parentName;
-
+    /**
+     * ztree属性
+     */
+    private Boolean open;
 
     public String getParentName() {
         return parentName;
@@ -24,11 +29,20 @@ public class SysDeptVo extends SysDept{
         this.parentName = parentName;
     }
 
+    public Boolean getOpen() {
+        return open;
+    }
+
+    public void setOpen(Boolean open) {
+        this.open = open;
+    }
+
 
     @Override
     public String toString() {
         return "SysDeptVo{" +
                 "parentName='" + parentName + '\'' +
+                ", open=" + open +
                 "} " + super.toString();
     }
 }

@@ -26,6 +26,7 @@ $.ajaxSetup({
 });
 
 //重写alert
+window._alert = window.alert;
 window.alert = function(msg, callback){
     parent.layer.alert(msg, function(index){
         parent.layer.close(index);

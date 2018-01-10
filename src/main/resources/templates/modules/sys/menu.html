@@ -3,20 +3,19 @@
 <head>
 <title>菜单管理</title>
 <#include "/header.html">
-<link rel="stylesheet" href="${request.contextPath}/statics/css/bootstrap-table.min.css">
-<link rel="stylesheet" href="${request.contextPath}/statics/plugins/treegrid/jquery.treegrid.css">
-<script src="${request.contextPath}/statics/libs/bootstrap-table.min.js"></script>
-<script src="${request.contextPath}/statics/plugins/treegrid/jquery.treegrid.min.js"></script>
-<script src="${request.contextPath}/statics/plugins/treegrid/jquery.treegrid.bootstrap3.js"></script>
-<script src="${request.contextPath}/statics/plugins/treegrid/jquery.treegrid.extension.js"></script>
-<script src="${request.contextPath}/statics/plugins/treegrid/tree.table.js"></script>
+	<link rel="stylesheet" href="${request.contextPath}/plugins/bootstrap-table/bootstrap-table.min.css">
+	<link rel="stylesheet" href="${request.contextPath}/plugins/treegrid/jquery.treegrid.css">
+	<script src="${request.contextPath}/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+	<script src="${request.contextPath}/plugins/treegrid/js/jquery.treegrid.min.js"></script>
+	<script src="${request.contextPath}/plugins/treegrid/jquery.treegrid.extension.js"></script>
+	<script src="${request.contextPath}/plugins/treegrid/tree.table.js"></script>
 </head>
 <body>
-<div id="rrapp" v-cloak>
+<div id="adminApp" v-cloak>
 	<div v-show="showList">
 		<div class="grid-btn">
 			<#if shiro.hasPermission("sys:menu:save")>
-			<a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
+			<a class="btn btn-primary" @click="create"><i class="fa fa-plus"></i>&nbsp;新增</a>
 			</#if>
 			<#if shiro.hasPermission("sys:menu:update")>
 			<a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
@@ -100,6 +99,6 @@
 	<ul id="menuTree" class="ztree"></ul>
 </div>
 
-<script src="${request.contextPath}/statics/js/modules/sys/menu.js?_${.now?long}"></script>
+<script src="${request.contextPath}/pages/modules/sys/menu.js?_${.now?long}"></script>
 </body>
 </html>

@@ -19,5 +19,8 @@ public interface SysDeptService extends IService<SysDept> {
 
     SysDept selectById(Long deptId);
 
+    SysDeptVo selectSysDeptVoById(Long deptId);
+
     List<SysDeptVo> querySysDeptVoList(SysDeptVo sysDeptVo);
+
 }

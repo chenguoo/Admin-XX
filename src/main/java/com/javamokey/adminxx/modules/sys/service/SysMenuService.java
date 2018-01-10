@@ -33,4 +33,7 @@ public interface SysMenuService extends IService<SysMenu> {
      */
     List<SysMenuVo> queryListParentId(Long parentId);
 
+    List<SysMenuVo> queryList();
+
+
 }

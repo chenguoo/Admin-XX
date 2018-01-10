@@ -1,3 +1,7 @@
+/**
+ * 扩展treegrid插件
+ * 使用时需要依次引入bootstrap-table,treegrid
+ */
 (function ($) {
     "use strict";
 

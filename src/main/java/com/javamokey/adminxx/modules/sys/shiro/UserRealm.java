@@ -46,7 +46,7 @@ public class UserRealm extends AuthorizingRealm {
 
         //系统管理员，拥有最高权限
         if (userId == 1) {
-			List<SysMenuVo> menuList = sysMenuMapper.queryList(new SysMenuVo());
+			List<SysMenuVo> menuList = sysMenuMapper.queryList();
 //            List<SysMenuVo> menuList = sysMenuMapper.selectByMap(new HashMap<String, Object>());
             permsList = new ArrayList<>(menuList.size());
             for (SysMenuVo menu : menuList) {

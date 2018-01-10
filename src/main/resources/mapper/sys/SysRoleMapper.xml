@@ -16,4 +16,8 @@
         role_id, role_name, remark, dept_id, create_time
     </sql>
 
+    <select id="queryList" resultType="io.renren.modules.sys.entity.SysRoleEntity">
+        select r.*, (select d.name from sys_dept d where d.dept_id = r.dept_id) deptName from sys_role r
+    </select>
+
 </mapper>

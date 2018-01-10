@@ -1,4 +1,4 @@
-var setting = {
+var deptZtreeSetting = {
     data: {
         simpleData: {
             enable: true,
@@ -7,95 +7,101 @@ var setting = {
             rootPId: -1
         },
         key: {
-            url:"nourl"
+            url: "nourl"
         }
     }
 };
-var ztree;
+var deptZtree;
 
 var vm = new Vue({
-    el:'#adminApp',
-    data:{
+    el: '#adminApp',
+    data: {
         showList: true,
         title: null,
-        dept:{
-            parentName:null,
-            parentId:0,
-            orderNum:0
+        dept: {
+            parentName: null,
+            parentId: 0,
+            orderNum: 0
         }
     },
     methods: {
-        getDept: function(){
+        getDeptTree: function () {
             //加载部门树
-            $.get(baseURL + "sys/dept/select", function(r){
-                ztree = $.fn.zTree.init($("#deptTree"), setting, r.deptList);
-                var node = ztree.getNodeByParam("deptId", vm.dept.parentId);
-                ztree.selectNode(node);
+            $.get(baseURL + "sys/dept/select", function (r) {
+                deptZtree = $.fn.zTree.init($("#deptSelectTree"), deptZtreeSetting, r.deptList);
+                var node = deptZtree.getNodeByParam("deptId", vm.dept.parentId);
+                deptZtree.selectNode(node);
 
                 vm.dept.parentName = node.name;
             })
         },
-        add: function(){
+        create: function () {
             vm.showList = false;
             vm.title = "新增";
-            vm.dept = {parentName:null,parentId:0,orderNum:0};
-            vm.getDept();
+            vm.dept = {parentName: null, parentId: 0, orderNum: 0};
+            vm.getDeptTree();
         },
         update: function () {
             var deptId = getDeptId();
-            if(deptId == null){
-                return ;
+            if (deptId == null) {
+                $.alert({
+                    title:'提示',
+                    content: '请选择一条记录',
+                    type:'red'
+                });
+                return;
             }
 
-            $.get(baseURL + "sys/dept/info/"+deptId, function(r){
+            $.get(baseURL + "sys/dept/info/" + deptId, function (r) {
                 vm.showList = false;
                 vm.title = "修改";
                 vm.dept = r.dept;
 
-                vm.getDept();
+                vm.getDeptTree();
             });
         },
         del: function () {
             var deptId = getDeptId();
-            if(deptId == null){
-                return ;
-            }else{
-            $.confirm({
-                content: '确定要删除选中的记录？',
-                buttons: {
-                    confirm: function () {
-                        $.alert('Confirmed!');
-                    },
-                    cancel: function () {
-                        $.alert('Canceled!');
-                    },
-                    somethingElse: {
-                        text: 'Something else',
-                        btnClass: 'btn-blue',
-                        keys: ['enter', 'shift'],
-                        action: function(){
-                            $.alert('Something else?');
-                        }
-                    }
-                }
-            });
-            }
-            /*confirm('确定要删除选中的记录？', function(){
-                $.ajax({
-                    type: "POST",
-                    url: baseURL + "sys/dept/delete",
-                    data: "deptId=" + deptId,
-                    success: function(r){
-                        if(r.code === 0){
-                            alert('操作成功', function(){
-                                vm.reload();
-                            });
-                        }else{
-                            alert(r.msg);
+            if (deptId == null) {
+                $.alert('请选择一条记录');
+                return;
+            } else {
+                $.confirm({
+                    content: '确定要删除选中的记录？',
+                    buttons: {
+                        confirm: {
+                            text: '确定',
+                            btnClass: 'btn-blue',
+                            action: function () {
+                                $.ajax({
+                                    type: "POST",
+                                    url: baseURL + "sys/dept/delete",
+                                    data: "deptId=" + deptId,
+                                    success: function (r) {
+                                        if (r.code === 0) {
+                                            $.alert({
+                                                title:'提示',
+                                                content: '操作成功',
+                                                onClose:function(){
+                                                    vm.reload();
+                                                }
+                                            });
+                                        } else {
+                                            $.alert(r.msg);
+                                        }
+                                    }
+                                });
+                            }
+                        },
+                        cancel: {
+                            text: '取消',
+                            action: function () {
+
+                            }
                         }
                     }
                 });
-            });*/
+            }
         },
         saveOrUpdate: function (event) {
             var url = vm.dept.deptId == null ? "sys/dept/save" : "sys/dept/update";
@@ -104,18 +110,21 @@ var vm = new Vue({
                 url: baseURL + url,
                 contentType: "application/json",
                 data: JSON.stringify(vm.dept),
-                success: function(r){
-                    if(r.code === 0){
-                        alert('操作成功', function(){
-                            vm.reload();
+                success: function (r) {
+                    if (r.code === 0) {
+                        $.alert({
+                            content: '操作成功',
+                            onClose:function(){
+                                vm.reload();
+                            }
                         });
-                    }else{
-                        alert(r.msg);
+                    } else {
+                        $.alert(r.msg);
                     }
                 }
             });
         },
-        deptTree: function(){
+        deptTree: function () {
             layer.open({
                 type: 1,
                 offset: '50px',
@@ -127,7 +136,7 @@ var vm = new Vue({
                 content: jQuery("#deptLayer"),
                 btn: ['确定', '取消'],
                 btn1: function (index) {
-                    var node = ztree.getSelectedNodes();
+                    var node = deptZtree.getSelectedNodes();
                     //选择上级部门
                     vm.dept.parentId = node[0].deptId;
                     vm.dept.parentName = node[0].name;
@@ -163,21 +172,19 @@ Dept.initColumn = function () {
 };
 
 
-function getDeptId () {
+function getDeptId() {
     var selected = $('#deptTable').bootstrapTreeTable('getSelections');
-    if (selected.length == 0) {
-        // alert("请选择一条记录");
-        $.alert('请选择一条记录');
-        return false;
-    } else {
+    if (selected.length > 0) {
         return selected[0].id;
+    } else {
+        return null;
     }
 }
 
 
 $(function () {
     //init...
-    $.get(baseURL + "sys/dept/getDeptIdInfo", function(r){
+    $.get(baseURL + "sys/dept/getDeptIdInfo", function (r) {
         var colunms = Dept.initColumn();
         var table = new TreeTable(Dept.id, baseURL + "sys/dept/list", colunms);
         table.setRootCodeValue(r.deptId);
@@ -185,7 +192,7 @@ $(function () {
         table.setIdField("deptId");
         table.setCodeField("deptId");
         table.setParentCodeField("parentId");
-        table.setExpandAll(false);
+        table.setExpandAll(true);
         table.init();
         Dept.table = table;
     });

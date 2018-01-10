@@ -21,6 +21,10 @@ public interface SysMenuMapper extends BaseMapper<SysMenu> {
      */
     List<SysMenuVo> queryListParentId(Long parentId);
 
+    /**
+     * 查询菜单列表
+     * @return
+     */
+    List<SysMenuVo> queryList();
 
-    List<SysMenuVo> queryList(SysMenuVo sysMenuVo);
 }
