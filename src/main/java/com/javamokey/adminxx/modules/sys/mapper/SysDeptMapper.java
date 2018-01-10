@@ -2,6 +2,9 @@ package com.javamokey.adminxx.modules.sys.mapper;
 
 import com.javamokey.adminxx.modules.sys.entity.SysDept;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
+import com.javamokey.adminxx.modules.sys.entity.vo.SysDeptVo;
+
+import java.util.List;
 
 /**
  * <p>
@@ -12,5 +15,7 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
  * @since 2017-12-26
  */
 public interface SysDeptMapper extends BaseMapper<SysDept> {
+
+    List<SysDeptVo> querySysDeptVoList(SysDeptVo sysDeptVo);
 
 }

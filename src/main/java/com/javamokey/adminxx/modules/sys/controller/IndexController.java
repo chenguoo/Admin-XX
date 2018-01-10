@@ -30,6 +30,16 @@ public class IndexController {
     @Autowired
     private Producer producer;
 
+    @RequestMapping("modules/{module}/{url}.html")
+    public String module(@PathVariable("module") String module, @PathVariable("url") String url){
+        return "modules/" + module + "/" + url;
+    }
+
+    @RequestMapping("{url}.html")
+    public String url(@PathVariable("url") String url){
+        return url;
+    }
+
     /**
      * 主页
      *
@@ -38,20 +48,7 @@ public class IndexController {
     @RequestMapping("/")
     public String index() {
         //其他非系统级的初始化...
-
         return "index";
-    }
-
-    /**
-     * 登陆页面
-     *
-     * @return
-     */
-    @GetMapping("login")
-    public String loginGet() {
-        //init...
-
-        return "login";
     }
 
     /**
@@ -62,8 +59,8 @@ public class IndexController {
      * @param captcha
      * @return
      */
-    @PostMapping("login")
     @ResponseBody
+    @RequestMapping(value = "login",method = RequestMethod.POST)
     public R loginPost(String username, String password, String captcha) {
         String kaptcha = ShiroUtils.getKaptcha(Constants.KAPTCHA_SESSION_KEY);
         if (!captcha.equalsIgnoreCase(kaptcha)) {
@@ -94,7 +91,7 @@ public class IndexController {
     @GetMapping("logout")
     public String logout() {
         ShiroUtils.logout();
-        return "redirect:login";
+        return "redirect:login.html";
     }
 
     /**
@@ -119,11 +116,6 @@ public class IndexController {
         ImageIO.write(image, "jpg", out);
     }
 
-    @RequestMapping("/unauthorized")
-    public String unauthorized() {
-
-        return "unauthorized";
-    }
 
     /**
      * 页面

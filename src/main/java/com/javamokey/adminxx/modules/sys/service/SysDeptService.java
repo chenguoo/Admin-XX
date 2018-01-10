@@ -1,7 +1,11 @@
 package com.javamokey.adminxx.modules.sys.service;
 
+import com.javamokey.adminxx.common.util.R;
 import com.javamokey.adminxx.modules.sys.entity.SysDept;
 import com.baomidou.mybatisplus.service.IService;
+import com.javamokey.adminxx.modules.sys.entity.vo.SysDeptVo;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +17,7 @@ import com.baomidou.mybatisplus.service.IService;
  */
 public interface SysDeptService extends IService<SysDept> {
 
+    SysDept selectById(Long deptId);
+
+    List<SysDeptVo> querySysDeptVoList(SysDeptVo sysDeptVo);
 }

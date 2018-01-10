@@ -2,6 +2,7 @@ package com.javamokey.adminxx.modules.sys.mapper;
 
 import com.javamokey.adminxx.modules.sys.entity.SysMenu;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
+import com.javamokey.adminxx.modules.sys.entity.vo.SysMenuVo;
 
 import java.util.List;
 
@@ -18,6 +19,8 @@ public interface SysMenuMapper extends BaseMapper<SysMenu> {
      * 根据父菜单，查询子菜单
      * @param parentId 父菜单ID
      */
-    List<SysMenu> queryListParentId(Long parentId);
+    List<SysMenuVo> queryListParentId(Long parentId);
 
+
+    List<SysMenuVo> queryList(SysMenuVo sysMenuVo);
 }

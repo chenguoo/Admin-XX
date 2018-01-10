@@ -22,8 +22,9 @@ public class FreemarkerConfig {
     @Bean
     public FreeMarkerConfigurer freeMarkerConfigurer(ShiroTag shiroTag){
         FreeMarkerConfigurer configurer = new FreeMarkerConfigurer();
+        //默认是resources/templates
 //        configurer.setTemplateLoaderPath("classpath:/WEB-INF/views/");
-        configurer.setTemplateLoaderPath("classpath:/fkTemplates/");
+        configurer.setTemplateLoaderPath("classpath:/templates/");
 
         Map<String, Object> variables = new HashMap<>(1);
         variables.put("shiro", shiroTag);

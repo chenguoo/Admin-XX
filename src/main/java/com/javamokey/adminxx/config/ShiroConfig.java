@@ -57,9 +57,9 @@ public class ShiroConfig {
     public ShiroFilterFactoryBean shirFilter(SecurityManager securityManager) {
         ShiroFilterFactoryBean shiroFilter = new ShiroFilterFactoryBean();
         shiroFilter.setSecurityManager(securityManager);
-        shiroFilter.setLoginUrl("/login");
+        shiroFilter.setLoginUrl("/login.html");
         shiroFilter.setSuccessUrl("/");
-        shiroFilter.setUnauthorizedUrl("/unauthorized");
+        shiroFilter.setUnauthorizedUrl("/unauthorized.html");
 
         Map<String, String> filterMap = new LinkedHashMap<>();
         filterMap.put("/layouts/**", "anon");
@@ -68,7 +68,8 @@ public class ShiroConfig {
         filterMap.put("/favicon.ico", "anon");
         filterMap.put("/captcha.jpg", "anon");
         filterMap.put("/swagger/**", "anon");
-        filterMap.put("/login", "anon");
+        filterMap.put("/login.html", "anon");//登陆页面
+        filterMap.put("/login", "anon");//登陆请求
         filterMap.put("/**", "authc");
         shiroFilter.setFilterChainDefinitionMap(filterMap);
 

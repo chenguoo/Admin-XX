@@ -3,6 +3,7 @@ package com.javamokey.adminxx.modules.sys.controller;
 
 import com.javamokey.adminxx.common.util.R;
 import com.javamokey.adminxx.modules.sys.entity.SysMenu;
+import com.javamokey.adminxx.modules.sys.entity.vo.SysMenuVo;
 import com.javamokey.adminxx.modules.sys.service.SysMenuService;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -34,7 +35,7 @@ public class SysMenuController extends AbstractController{
      */
     @RequestMapping("/nav")
     public R nav(){
-        List<SysMenu> menuList = sysMenuService.getUserMenuList(getUserId());
+        List<SysMenuVo> menuList = sysMenuService.getUserMenuList(getUserId());
         return R.ok().put("menuList", menuList);
     }
 

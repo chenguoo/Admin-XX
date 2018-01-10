@@ -48,19 +48,6 @@ public class SysMenu implements Serializable {
      */
 	private Integer orderNum;
 
-	/**
-	 * 父菜单名称
-	 */
-	private String parentName;
-	/**
-	 * ztree属性
-	 */
-	private Boolean open;
-
-
-	private List<?> list;
-
-
 	public Long getMenuId() {
 		return menuId;
 	}
@@ -126,30 +113,6 @@ public class SysMenu implements Serializable {
 	}
 
 
-
-	public List<?> getList() {
-		return list;
-	}
-
-	public void setList(List<?> list) {
-		this.list = list;
-	}
-
-	public String getParentName() {
-		return parentName;
-	}
-
-	public void setParentName(String parentName) {
-		this.parentName = parentName;
-	}
-
-	public Boolean getOpen() {
-		return open;
-	}
-
-	public void setOpen(Boolean open) {
-		this.open = open;
-	}
 	@Override
 	public String toString() {
 		return "SysMenu{" +

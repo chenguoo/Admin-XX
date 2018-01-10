@@ -4,16 +4,38 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.javamokey.adminxx.modules.sys.entity.SysDept">
-        <id column="dept_id" property="deptId" />
-        <result column="parent_id" property="parentId" />
-        <result column="name" property="name" />
-        <result column="order_num" property="orderNum" />
-        <result column="del_flag" property="delFlag" />
+        <id column="dept_id" property="deptId"/>
+        <result column="parent_id" property="parentId"/>
+        <result column="name" property="name"/>
+        <result column="order_num" property="orderNum"/>
+        <result column="del_flag" property="delFlag"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         dept_id, parent_id, name, order_num, del_flag
     </sql>
+
+    <select id="querySysDeptVoList" parameterType="com.javamokey.adminxx.modules.sys.entity.vo.SysDeptVo"
+            resultType="com.javamokey.adminxx.modules.sys.entity.vo.SysDeptVo">
+        select d.*,(select p.name from sys_dept p where p.dept_id = d.parent_id) as parentName
+        from sys_dept d
+        <where>
+            <if test="parentId != null">
+                d.parent_id = #{parentId}
+            </if>
+            <if test="name != null">
+                d.name = #{name}
+            </if>
+            <if test="delFlag != null">
+                d.del_flag = #{delFlag}
+            </if>
+            <if test="delFlag == null">
+                d.del_flag = '0'
+            </if>
+        </where>
+        order by d.order_num asc
+    </select>
+
 
 </mapper>
