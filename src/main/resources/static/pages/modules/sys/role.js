@@ -19,15 +19,15 @@ $(function () {
         multiselect: true,
         pager: "#jqGridPager",
         jsonReader : {
-            root: "page.list",
-            page: "page.currPage",
-            total: "page.totalPage",
-            records: "page.totalCount"
+            root: "page.records",//当前记录列表
+            page: "page.current",//当前第几页
+            total: "page.pages",//总页数
+            records: "page.total"//总记录数
         },
         prmNames : {
-            page:"page",
-            rows:"limit",
-            order: "order"
+            page:"current",//当前第几页
+            rows:"size",//每页条数
+            order: "order"//排序
         },
         gridComplete:function(){
             //隐藏grid底部滚动条
