@@ -24,5 +24,11 @@ public interface SysRoleMapper extends BaseMapper<SysRole> {
      * @param page 翻页对象，可以作为 xml 参数直接使用，传递参数 Page 即自动分页
      * @return
      */
-    List<SysRoleVo> selectSysRoleVoPage(Pagination page);
+    List<SysRoleVo> querySysRoleVoPage(Pagination page);
+
+    SysRoleVo querySysRoleVoById(Long roleId);
+
+    void deleteBatch(Long[] roleIds);
+
+    void save(SysRoleVo role);
 }

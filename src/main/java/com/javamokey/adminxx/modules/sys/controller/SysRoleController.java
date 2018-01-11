@@ -5,22 +5,16 @@ import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.plugins.pagination.Pagination;
 import com.javamokey.adminxx.common.annotation.SysLog;
 import com.javamokey.adminxx.common.util.Constant;
-import com.javamokey.adminxx.common.util.PageUtils;
 import com.javamokey.adminxx.common.util.R;
-import com.javamokey.adminxx.modules.sys.entity.SysRole;
+import com.javamokey.adminxx.common.validator.ValidatorUtils;
 import com.javamokey.adminxx.modules.sys.entity.vo.SysRoleVo;
 import com.javamokey.adminxx.modules.sys.service.SysRoleDeptService;
 import com.javamokey.adminxx.modules.sys.service.SysRoleMenuService;
 import com.javamokey.adminxx.modules.sys.service.SysRoleService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import org.springframework.stereotype.Controller;
-
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * <p>
@@ -62,12 +56,74 @@ public class SysRoleController extends AbstractController {
         Page<SysRoleVo> page = new Page<>(params.getCurrent(), params.getSize());
 //        page.setCurrent(Integer.parseInt((String)params.get("page")))
 //                .setSize(10);
-        page = sysRoleService.selectSysRoleVoPage(page);
+        page = sysRoleService.querySysRoleVoPage(page);
 
 //        PageUtils pageUtil = new PageUtils(page.getRecords(), page.getTotal(), page.getLimit(), page.getCurrent());
 
         return R.ok().put("page", page);
     }
 
+
+    /**
+     * 角色信息
+     */
+    @RequestMapping("/info/{roleId}")
+    @RequiresPermissions("sys:role:info")
+    public R info(@PathVariable("roleId") Long roleId){
+
+        SysRoleVo role = sysRoleService.querySysRoleVoById(roleId);
+
+        //查询角色对应的菜单
+        List<Long> menuIdList = sysRoleMenuService.queryMenuIdList(roleId);
+        role.setMenuIdList(menuIdList);
+
+        //查询角色对应的部门
+        List<Long> deptIdList = sysRoleDeptService.queryDeptIdList(roleId);
+        role.setDeptIdList(deptIdList);
+
+        return R.ok().put("role", role);
+    }
+
+    /**
+     * 保存角色
+     */
+    @SysLog("保存角色")
+    @RequestMapping("/save")
+    @RequiresPermissions("sys:role:save")
+    public R save(@RequestBody SysRoleVo role){
+
+        ValidatorUtils.validateEntity(role);
+
+        sysRoleService.save(role);
+
+        return R.ok();
+    }
+
+
+    /**
+     * 修改角色
+     */
+    @SysLog("修改角色")
+    @RequestMapping("/update")
+    @RequiresPermissions("sys:role:update")
+    public R update(@RequestBody SysRoleVo role){
+        ValidatorUtils.validateEntity(role);
+
+        sysRoleService.update(role);
+
+        return R.ok();
+    }
+
+    /**
+     * 删除角色
+     */
+    @SysLog("删除角色")
+    @RequestMapping("/delete")
+    @RequiresPermissions("sys:role:delete")
+    public R delete(@RequestBody Long[] roleIds){
+        sysRoleService.deleteBatch(roleIds);
+
+        return R.ok();
+    }
 }
 

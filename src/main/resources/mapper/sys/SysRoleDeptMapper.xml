@@ -14,4 +14,8 @@
         id, role_id, dept_id
     </sql>
 
+    <select id="queryDeptIdList" resultType="java.lang.Long">
+        select dept_id from sys_role_dept where role_id = #{value}
+    </select>
+
 </mapper>

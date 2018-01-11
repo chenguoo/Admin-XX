@@ -40,7 +40,6 @@ public class SysDeptServiceImpl extends ServiceImpl<SysDeptMapper, SysDept> impl
 
     @Override
     public List<SysDeptVo> querySysDeptVoList(SysDeptVo sysDeptVo) {
-
         return sysDeptMapper.querySysDeptVoList(sysDeptVo);
     }
 

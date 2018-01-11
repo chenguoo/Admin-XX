@@ -6,7 +6,7 @@
 
     <!-- 开发、测试环境 -->
     <springProfile name="dev,test">
-        <logger name="org.springframework.web" level="INFO"/>
+        <!--<logger name="org.springframework.web" level="INFO"/>-->
         <logger name="org.springboot.sample" level="INFO" />
         <logger name="com.baomidou.mybatisplus.mapper" level="DEBUG" />
         <logger name="com.javamokey.adminxx" level="DEBUG" />
@@ -18,5 +18,9 @@
         <logger name="org.springboot.sample" level="ERROR" />
         <logger name="com.javamokey.adminxx" level="ERROR" />
     </springProfile>
+
+
+
+
 
 </configuration>

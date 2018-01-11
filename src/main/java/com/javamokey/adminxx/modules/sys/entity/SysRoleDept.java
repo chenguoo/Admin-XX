@@ -27,8 +27,13 @@ public class SysRoleDept implements Serializable {
      */
 	private Long deptId;
 
+	public SysRoleDept(Long roleId, Long deptId) {
+		this.roleId = roleId;
+		this.deptId = deptId;
+	}
 
-	public Long getId() {
+
+    public Long getId() {
 		return id;
 	}
 

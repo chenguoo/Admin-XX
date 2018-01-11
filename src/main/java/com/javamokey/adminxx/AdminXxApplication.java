@@ -9,4 +9,10 @@ public class AdminXxApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(AdminXxApplication.class, args);
 	}
+
+
+
+
+
+
 }

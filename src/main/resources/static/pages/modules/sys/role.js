@@ -19,14 +19,14 @@ $(function () {
         multiselect: true,
         pager: "#jqGridPager",
         jsonReader : {
-            root: "page.records",//当前记录列表
-            page: "page.current",//当前第几页
-            total: "page.pages",//总页数
-            records: "page.total"//总记录数
+            root: "page.records",//返回当前记录列表
+            page: "page.current",//返回当前第几页
+            total: "page.pages",//返回总页数
+            records: "page.total"//返回总记录数
         },
         prmNames : {
-            page:"current",//当前第几页
-            rows:"size",//每页条数
+            page:"current",//请求当前第几页
+            rows:"size",//请求每页条数
             order: "order"//排序
         },
         gridComplete:function(){
@@ -94,7 +94,7 @@ var data_setting = {
 };
 
 var vm = new Vue({
-    el:'#rrapp',
+    el:'#adminApp',
     data:{
         q:{
             roleName: null

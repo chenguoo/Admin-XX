@@ -1,12 +1,9 @@
 package com.javamokey.adminxx.modules.sys.service;
 
 import com.baomidou.mybatisplus.plugins.Page;
-import com.baomidou.mybatisplus.plugins.pagination.Pagination;
 import com.javamokey.adminxx.modules.sys.entity.SysRole;
 import com.baomidou.mybatisplus.service.IService;
 import com.javamokey.adminxx.modules.sys.entity.vo.SysRoleVo;
-
-import java.util.List;
 
 /**
  * <p>
@@ -22,5 +19,17 @@ public interface SysRoleService extends IService<SysRole> {
      * @param page
      * @return
      */
-    Page<SysRoleVo> selectSysRoleVoPage(Page<SysRoleVo> page);
+    Page<SysRoleVo> querySysRoleVoPage(Page<SysRoleVo> page);
+
+    SysRoleVo querySysRoleVoById(Long roleId);
+
+    void deleteBatch(Long[] roleIds);
+
+    /**
+     * 保存角色信息
+     * @param role
+     */
+    void save(SysRoleVo role);
+
+    void update(SysRoleVo role);
 }

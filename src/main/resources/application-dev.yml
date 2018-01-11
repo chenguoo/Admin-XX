@@ -31,3 +31,8 @@ spring:
                 wall:
                     config:
                         multi-statement-allow: true
+
+#自定义设置:
+#事务超时时间 -1无
+default-transaction-timeout: -1
+
