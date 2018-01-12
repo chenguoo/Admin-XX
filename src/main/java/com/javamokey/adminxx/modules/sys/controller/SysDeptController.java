@@ -1,6 +1,7 @@
 package com.javamokey.adminxx.modules.sys.controller;
 
 
+import com.javamokey.adminxx.common.annotation.SysLog;
 import com.javamokey.adminxx.common.util.Constant;
 import com.javamokey.adminxx.common.util.R;
 import com.javamokey.adminxx.modules.sys.entity.SysDept;
@@ -99,6 +100,7 @@ public class SysDeptController extends AbstractController {
     /**
      * 保存
      */
+    @SysLog("添加机构")
     @RequestMapping("/save")
     @RequiresPermissions("sys:dept:save")
     public R save(@RequestBody SysDept dept) {
@@ -111,6 +113,7 @@ public class SysDeptController extends AbstractController {
     /**
      * 修改
      */
+    @SysLog("修改机构")
     @RequestMapping("/update")
     @RequiresPermissions("sys:dept:update")
     public R update(@RequestBody SysDept dept) {
@@ -123,6 +126,7 @@ public class SysDeptController extends AbstractController {
     /**
      * 删除
      */
+    @SysLog("删除机构")
     @RequestMapping("/delete")
     @RequiresPermissions("sys:dept:delete")
     public R delete(@PathVariable(value = "deptId", required = true) long deptId) {

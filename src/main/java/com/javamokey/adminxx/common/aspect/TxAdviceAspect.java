@@ -1,4 +1,4 @@
-package com.javamokey.adminxx.config;
+package com.javamokey.adminxx.common.aspect;
 
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.aop.Advisor;
@@ -7,7 +7,7 @@ import org.springframework.aop.support.DefaultPointcutAdvisor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.interceptor.*;
@@ -25,8 +25,9 @@ import java.util.Map;
  * Created in 2018-01-11 15:43
  */
 @Aspect
-@Configuration
-public class TxAdviceInterceptorConfig {
+//@Configuration
+@Component
+public class TxAdviceAspect {
 
     @Value("${default-transaction-timeout}")
     private int TX_METHOD_TIMEOUT = 20;//默认20s

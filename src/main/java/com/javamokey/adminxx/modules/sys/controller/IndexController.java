@@ -2,6 +2,7 @@ package com.javamokey.adminxx.modules.sys.controller;
 
 import com.google.code.kaptcha.Constants;
 import com.google.code.kaptcha.Producer;
+import com.javamokey.adminxx.common.annotation.SysLog;
 import com.javamokey.adminxx.common.util.R;
 import com.javamokey.adminxx.modules.sys.shiro.ShiroUtils;
 import org.apache.shiro.authc.*;
@@ -59,6 +60,7 @@ public class IndexController {
      * @param captcha
      * @return
      */
+    @SysLog("登陆系统")
     @ResponseBody
     @RequestMapping(value = "login",method = RequestMethod.POST)
     public R loginPost(String username, String password, String captcha) {
@@ -88,6 +90,7 @@ public class IndexController {
     /**
      * 退出
      */
+    @SysLog("退出系统")
     @GetMapping("logout")
     public String logout() {
         ShiroUtils.logout();
