@@ -8,8 +8,8 @@ import com.baomidou.mybatisplus.service.IService;
  * 系统配置信息表 服务类
  * </p>
  *
- * @author Cheney
- * @since 2017-12-26
+ * @author Cheney123
+ * @since 2018-01-14
  */
 public interface SysConfigService extends IService<SysConfig> {
 

@@ -3,6 +3,7 @@
 package com.javamokey.adminxx.common.aspect;
 
 import com.alibaba.fastjson.JSON;
+import com.javamokey.adminxx.common.annotation.SysLogAnnotation;
 import com.javamokey.adminxx.common.util.HttpContextUtils;
 import com.javamokey.adminxx.common.util.IPUtils;
 import com.javamokey.adminxx.modules.sys.entity.SysLog;
@@ -35,7 +36,7 @@ public class SysLogAspect {
     @Autowired
     private SysLogService sysLogService;
 
-    @Pointcut("@annotation(com.javamokey.adminxx.common.annotation.SysLog)")
+    @Pointcut("@annotation(com.javamokey.adminxx.common.annotation.SysLogAnnotation)")
     public void logPointCut() {
     }
 
@@ -58,7 +59,7 @@ public class SysLogAspect {
         Method method = signature.getMethod();
 
         SysLog sysLog = new SysLog();
-        com.javamokey.adminxx.common.annotation.SysLog sysLogAnnotation = method.getAnnotation(com.javamokey.adminxx.common.annotation.SysLog.class);
+        SysLogAnnotation sysLogAnnotation = method.getAnnotation(SysLogAnnotation.class);
         if (sysLogAnnotation != null) {
             //注解上的描述
             sysLog.setOperation(sysLogAnnotation.value());

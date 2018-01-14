@@ -3,6 +3,9 @@ package com.javamokey.adminxx.modules.sys.entity;
 import com.baomidou.mybatisplus.enums.IdType;
 import java.util.Date;
 import com.baomidou.mybatisplus.annotations.TableId;
+import org.hibernate.validator.constraints.NotBlank;
+
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
@@ -22,6 +25,7 @@ public class SysRole implements Serializable {
     /**
      * 角色名称
      */
+	@NotBlank(message="角色名称不能为空")
 	private String roleName;
     /**
      * 备注
@@ -30,6 +34,7 @@ public class SysRole implements Serializable {
     /**
      * 部门ID
      */
+	@NotNull(message="部门不能为空")
 	private Long deptId;
     /**
      * 创建时间

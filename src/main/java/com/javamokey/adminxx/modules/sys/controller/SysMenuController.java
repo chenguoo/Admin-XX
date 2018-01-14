@@ -1,9 +1,8 @@
 package com.javamokey.adminxx.modules.sys.controller;
 
 
-import com.baomidou.mybatisplus.mapper.Condition;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
-import com.javamokey.adminxx.common.annotation.SysLog;
+import com.javamokey.adminxx.common.annotation.SysLogAnnotation;
 import com.javamokey.adminxx.common.exception.AppException;
 import com.javamokey.adminxx.common.util.Constant;
 import com.javamokey.adminxx.common.util.R;
@@ -15,11 +14,8 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -100,14 +96,14 @@ public class SysMenuController extends AbstractController {
     /**
      * 保存
      */
-    @SysLog("保存菜单")
+    @SysLogAnnotation("保存菜单")
     @RequestMapping("/save")
     @RequiresPermissions("sys:menu:save")
     public R save(@RequestBody SysMenu menu) {
         //数据校验
         verifyForm(menu);
 
-        sysMenuService.insertOrUpdate(menu);
+        sysMenuService.insert(menu);
 
         return R.ok();
     }
@@ -115,14 +111,14 @@ public class SysMenuController extends AbstractController {
     /**
      * 修改
      */
-    @SysLog("修改菜单")
+    @SysLogAnnotation("修改菜单")
     @RequestMapping("/update")
     @RequiresPermissions("sys:menu:update")
     public R update(@RequestBody SysMenu menu) {
         //数据校验
         verifyForm(menu);
 
-        sysMenuService.insertOrUpdate(menu);
+        sysMenuService.updateById(menu);
 
         return R.ok();
     }
@@ -130,7 +126,7 @@ public class SysMenuController extends AbstractController {
     /**
      * 删除
      */
-    @SysLog("删除菜单")
+    @SysLogAnnotation("删除菜单")
     @RequestMapping("/delete")
     @RequiresPermissions("sys:menu:delete")
     public R delete(long menuId) {

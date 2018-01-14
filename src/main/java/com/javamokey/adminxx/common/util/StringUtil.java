@@ -13,4 +13,8 @@ public class StringUtil {
     public static boolean isEmpty(CharSequence cs) {
         return org.apache.commons.lang3.StringUtils.isEmpty(cs);
     }
+
+    public static boolean isNotEmpty(CharSequence cs) {
+        return !isEmpty(cs);
+    }
 }

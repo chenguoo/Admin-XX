@@ -9,10 +9,6 @@ import org.springframework.stereotype.Component;
 
 /**
  * 系统配置Redis
- *
- * @author Cheney
- * @email sunlightcs@gmail.com
- * @date 2017/7/18 21:08
  */
 @Component
 public class SysConfigRedis {
@@ -20,10 +16,10 @@ public class SysConfigRedis {
     private RedisUtils redisUtils;
 
     public void saveOrUpdate(SysConfig config) {
-        if(config == null){
-            return ;
+        if (config == null) {
+            return;
         }
-        String key = RedisKeys.getSysConfigKey(config.getKey());
+        String key = RedisKeys.getSysConfigKey(config.getConfigKey());
         redisUtils.set(key, config);
     }
 
@@ -32,7 +28,7 @@ public class SysConfigRedis {
         redisUtils.delete(key);
     }
 
-    public SysConfig get(String configKey){
+    public SysConfig get(String configKey) {
         String key = RedisKeys.getSysConfigKey(configKey);
         return redisUtils.get(key, SysConfig.class);
     }

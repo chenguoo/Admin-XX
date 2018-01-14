@@ -2,7 +2,7 @@ package com.javamokey.adminxx.modules.sys.controller;
 
 import com.google.code.kaptcha.Constants;
 import com.google.code.kaptcha.Producer;
-import com.javamokey.adminxx.common.annotation.SysLog;
+import com.javamokey.adminxx.common.annotation.SysLogAnnotation;
 import com.javamokey.adminxx.common.util.R;
 import com.javamokey.adminxx.modules.sys.shiro.ShiroUtils;
 import org.apache.shiro.authc.*;
@@ -12,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.imageio.ImageIO;
-import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
@@ -60,7 +59,7 @@ public class IndexController {
      * @param captcha
      * @return
      */
-    @SysLog("登陆系统")
+    @SysLogAnnotation("登陆系统")
     @ResponseBody
     @RequestMapping(value = "login",method = RequestMethod.POST)
     public R loginPost(String username, String password, String captcha) {
@@ -90,7 +89,7 @@ public class IndexController {
     /**
      * 退出
      */
-    @SysLog("退出系统")
+    @SysLogAnnotation("退出系统")
     @GetMapping("logout")
     public String logout() {
         ShiroUtils.logout();

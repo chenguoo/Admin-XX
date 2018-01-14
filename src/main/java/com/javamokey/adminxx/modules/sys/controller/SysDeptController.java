@@ -1,20 +1,18 @@
 package com.javamokey.adminxx.modules.sys.controller;
 
 
-import com.javamokey.adminxx.common.annotation.SysLog;
+import com.javamokey.adminxx.common.annotation.SysLogAnnotation;
 import com.javamokey.adminxx.common.util.Constant;
 import com.javamokey.adminxx.common.util.R;
 import com.javamokey.adminxx.modules.sys.entity.SysDept;
 import com.javamokey.adminxx.modules.sys.entity.vo.SysDeptVo;
 import com.javamokey.adminxx.modules.sys.service.SysDeptService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -100,7 +98,7 @@ public class SysDeptController extends AbstractController {
     /**
      * 保存
      */
-    @SysLog("添加机构")
+    @SysLogAnnotation("添加机构")
     @RequestMapping("/save")
     @RequiresPermissions("sys:dept:save")
     public R save(@RequestBody SysDept dept) {
@@ -113,7 +111,7 @@ public class SysDeptController extends AbstractController {
     /**
      * 修改
      */
-    @SysLog("修改机构")
+    @SysLogAnnotation("修改机构")
     @RequestMapping("/update")
     @RequiresPermissions("sys:dept:update")
     public R update(@RequestBody SysDept dept) {
@@ -126,10 +124,10 @@ public class SysDeptController extends AbstractController {
     /**
      * 删除
      */
-    @SysLog("删除机构")
-    @RequestMapping("/delete")
+    @SysLogAnnotation("删除机构")
+    @RequestMapping(value="/delete")
     @RequiresPermissions("sys:dept:delete")
-    public R delete(@PathVariable(value = "deptId", required = true) long deptId) {
+    public R delete(@PathVariable(value = "deptId"  ) long deptId){
         //判断是否有子部门
         SysDeptVo sysDeptVo = new SysDeptVo();
         sysDeptVo.setParentId(deptId);

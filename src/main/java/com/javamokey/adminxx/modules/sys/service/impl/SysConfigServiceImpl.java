@@ -11,8 +11,8 @@ import org.springframework.stereotype.Service;
  * 系统配置信息表 服务实现类
  * </p>
  *
- * @author Cheney
- * @since 2017-12-26
+ * @author Cheney123
+ * @since 2018-01-14
  */
 @Service
 public class SysConfigServiceImpl extends ServiceImpl<SysConfigMapper, SysConfig> implements SysConfigService {

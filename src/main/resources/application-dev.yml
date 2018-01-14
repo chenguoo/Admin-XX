@@ -29,8 +29,12 @@ spring:
                     slow-sql-millis: 1000
                     merge-sql: true
                 wall:
+                    enabled: true
                     config:
                         multi-statement-allow: true
+                slf4j:
+                  enabled: true
+
 
 #自定义设置:
 #事务超时时间 -1无

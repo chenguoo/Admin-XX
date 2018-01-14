@@ -31,7 +31,7 @@
         <quartz.version>2.3.0</quartz.version>
         <commons.lang.version>2.6</commons.lang.version>
         <commons-lang3.version>3.3.2</commons-lang3.version>
-        <commons.fileupload.version>1.3.1</commons.fileupload.version>
+        <commons.fileupload.version>1.3.3</commons.fileupload.version>
         <commons.io.version>2.5</commons.io.version>
         <commons.codec.version>1.10</commons.codec.version>
         <commons.configuration.version>1.10</commons.configuration.version>
@@ -119,9 +119,15 @@
         </dependency>
 
         <dependency>
-            <artifactId>velocity</artifactId>
-            <groupId>org.apache.velocity</groupId>
-            <version>${velocity.version}</version>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+            <version>${quartz.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.mchange</groupId>
+                    <artifactId>c3p0</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!--<dependency>-->
@@ -134,11 +140,6 @@
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
         </dependency>
-        <dependency>
-            <groupId>commons-fileupload</groupId>
-            <artifactId>commons-fileupload</artifactId>
-            <version>${commons.fileupload.version}</version>
-        </dependency>
 
         <dependency>
             <groupId>commons-io</groupId>
@@ -147,9 +148,21 @@
         </dependency>
 
         <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>${commons.fileupload.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>commons-configuration</groupId>
             <artifactId>commons-configuration</artifactId>
             <version>${commons.configuration.version}</version>
+        </dependency>
+
+        <dependency>
+            <artifactId>velocity</artifactId>
+            <groupId>org.apache.velocity</groupId>
+            <version>${velocity.version}</version>
         </dependency>
 
         <dependency>

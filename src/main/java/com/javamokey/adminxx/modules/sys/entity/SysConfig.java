@@ -2,6 +2,8 @@ package com.javamokey.adminxx.modules.sys.entity;
 
 import com.baomidou.mybatisplus.enums.IdType;
 import com.baomidou.mybatisplus.annotations.TableId;
+import org.hibernate.validator.constraints.NotBlank;
+
 import java.io.Serializable;
 
 /**
@@ -9,81 +11,83 @@ import java.io.Serializable;
  * 系统配置信息表
  * </p>
  *
- * @author Cheney
- * @since 2017-12-26
+ * @author Cheney123
+ * @since 2018-01-14
  */
 public class SysConfig implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-	@TableId(value="id", type= IdType.AUTO)
-	private Long id;
+    @TableId(value = "id", type = IdType.AUTO)
+    private Long id;
     /**
      * key
      */
-	private String key;
+    @NotBlank(message="参数名不能为空")
+    private String configKey;
     /**
      * value
      */
-	private String value;
+    @NotBlank(message="参数值不能为空")
+    private String configValue;
     /**
      * 状态   0：隐藏   1：显示
      */
-	private Integer status;
+    private Integer status;
     /**
      * 备注
      */
-	private String remark;
+    private String remark;
 
 
-	public Long getId() {
-		return id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public String getKey() {
-		return key;
-	}
+    public String getConfigKey() {
+        return configKey;
+    }
 
-	public void setKey(String key) {
-		this.key = key;
-	}
+    public void setConfigKey(String configKey) {
+        this.configKey = configKey;
+    }
 
-	public String getValue() {
-		return value;
-	}
+    public String getConfigValue() {
+        return configValue;
+    }
 
-	public void setValue(String value) {
-		this.value = value;
-	}
+    public void setConfigValue(String configValue) {
+        this.configValue = configValue;
+    }
 
-	public Integer getStatus() {
-		return status;
-	}
+    public Integer getStatus() {
+        return status;
+    }
 
-	public void setStatus(Integer status) {
-		this.status = status;
-	}
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
 
-	public String getRemark() {
-		return remark;
-	}
+    public String getRemark() {
+        return remark;
+    }
 
-	public void setRemark(String remark) {
-		this.remark = remark;
-	}
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
 
-	@Override
-	public String toString() {
-		return "SysConfig{" +
-			"id=" + id +
-			", key=" + key +
-			", value=" + value +
-			", status=" + status +
-			", remark=" + remark +
-			"}";
-	}
+    @Override
+    public String toString() {
+        return "SysConfig{" +
+                "id=" + id +
+                ", configKey='" + configKey + '\'' +
+                ", configValue='" + configValue + '\'' +
+                ", status=" + status +
+                ", remark='" + remark + '\'' +
+                '}';
+    }
 }

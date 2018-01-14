@@ -3,7 +3,7 @@ package com.javamokey.adminxx.modules.sys.controller;
 
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.plugins.pagination.Pagination;
-import com.javamokey.adminxx.common.annotation.SysLog;
+import com.javamokey.adminxx.common.annotation.SysLogAnnotation;
 import com.javamokey.adminxx.common.util.Constant;
 import com.javamokey.adminxx.common.util.R;
 import com.javamokey.adminxx.common.validator.ValidatorUtils;
@@ -12,7 +12,10 @@ import com.javamokey.adminxx.modules.sys.service.SysRoleDeptService;
 import com.javamokey.adminxx.modules.sys.service.SysRoleMenuService;
 import com.javamokey.adminxx.modules.sys.service.SysRoleService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -69,7 +72,7 @@ public class SysRoleController extends AbstractController {
      */
     @RequestMapping("/info/{roleId}")
     @RequiresPermissions("sys:role:info")
-    public R info(@PathVariable("roleId") Long roleId){
+    public R info(@PathVariable("roleId") Long roleId) {
 
         SysRoleVo role = sysRoleService.querySysRoleVoById(roleId);
 
@@ -87,10 +90,10 @@ public class SysRoleController extends AbstractController {
     /**
      * 保存角色
      */
-    @SysLog("保存角色")
+    @SysLogAnnotation("保存角色")
     @RequestMapping("/save")
     @RequiresPermissions("sys:role:save")
-    public R save(@RequestBody SysRoleVo role){
+    public R save(@RequestBody SysRoleVo role) {
 
         ValidatorUtils.validateEntity(role);
 
@@ -103,10 +106,10 @@ public class SysRoleController extends AbstractController {
     /**
      * 修改角色
      */
-    @SysLog("修改角色")
+    @SysLogAnnotation("修改角色")
     @RequestMapping("/update")
     @RequiresPermissions("sys:role:update")
-    public R update(@RequestBody SysRoleVo role){
+    public R update(@RequestBody SysRoleVo role) {
         ValidatorUtils.validateEntity(role);
 
         sysRoleService.update(role);
@@ -117,10 +120,10 @@ public class SysRoleController extends AbstractController {
     /**
      * 删除角色
      */
-    @SysLog("删除角色")
+    @SysLogAnnotation("删除角色")
     @RequestMapping("/delete")
     @RequiresPermissions("sys:role:delete")
-    public R delete(@RequestBody Long[] roleIds){
+    public R delete(@RequestBody Long[] roleIds) {
         sysRoleService.deleteBatch(roleIds);
 
         return R.ok();

@@ -27,14 +27,17 @@ public class MpGenerator {
     public static void main(String[] args) {
         String packageName = "com.javamokey.adminxx.modules";
         String module = "sys";
-        String[] entity = {"sys_config","sys_dept","sys_log","sys_menu",
+        /*String[] entity = {"sys_config","sys_dept","sys_log","sys_menu",
                    "sys_oss","sys_role","sys_role_dept","sys_role_menu","sys_user","sys_user_role"};
+        */
+        module = "job";
+        String[] entity = {"schedule_job","schedule_job_log"};
         generateByTables(packageName, module, entity);
     }
 
     private static void generateByTables(String packageName, String module, String... tableNames) {
 
-        String dbUrl = "jdbc:mysql://localhost:3306/renren_security";
+        String dbUrl = "jdbc:mysql://localhost:3306/adminxx";
 
         // 全局配置
         GlobalConfig config = new GlobalConfig();

@@ -29,9 +29,9 @@ public class BeanUtils {
         try {
             org.apache.commons.beanutils.BeanUtils.copyProperties(dest, source);
         } catch (IllegalAccessException e) {
-            throw new AppException(e);
+            throw new AppException("拷贝数据时出错",e);
         } catch (InvocationTargetException e) {
-            throw new AppException(e);
+            throw new AppException("拷贝数据时出错",e);
         }
     }
 
