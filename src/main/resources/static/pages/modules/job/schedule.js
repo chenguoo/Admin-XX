@@ -43,7 +43,7 @@ $(function () {
 });
 
 var vm = new Vue({
-	el:'#rrapp',
+	el:'#adminApp',
 	data:{
 		q:{
 			beanName: null
