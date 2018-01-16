@@ -34,9 +34,10 @@ spring:
                         multi-statement-allow: true
                 slf4j:
                   enabled: true
-
-
+logging:
+  path: d:/log/
 #自定义设置:
 #事务超时时间 -1无
 default-transaction-timeout: -1
+
 

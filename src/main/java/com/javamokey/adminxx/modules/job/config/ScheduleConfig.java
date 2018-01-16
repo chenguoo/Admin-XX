@@ -11,7 +11,7 @@ import java.util.Properties;
 /**
  * 定时任务配置
  *
- * @author Cheney123
+ * @author Cheney
  * @since 2018-01-14
  */
 @Configuration

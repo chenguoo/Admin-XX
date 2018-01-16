@@ -59,9 +59,9 @@ public class ScheduleJobServiceImpl extends ServiceImpl<ScheduleJobMapper, Sched
         for (Long jobId : jobIds) {
             ScheduleUtils.deleteScheduleJob(scheduler, jobId);
         }
-
+        ArrayList<Long> ids = new ArrayList<>(Arrays.asList(jobIds));
         //删除数据
-        scheduleJobMapper.deleteBatchIds(new ArrayList<>(Arrays.asList(jobIds)));
+        scheduleJobMapper.deleteBatchIds(ids);
     }
 
     @Override

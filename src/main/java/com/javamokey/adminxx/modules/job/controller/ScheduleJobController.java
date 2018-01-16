@@ -12,6 +12,8 @@ import com.javamokey.adminxx.modules.job.entity.ScheduleJob;
 import com.javamokey.adminxx.modules.job.service.ScheduleJobService;
 import com.javamokey.adminxx.modules.sys.entity.SysConfig;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import org.springframework.stereotype.Controller;
@@ -30,6 +32,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/sys/schedule")
 public class ScheduleJobController {
+    private Logger logger = LoggerFactory.getLogger(getClass());
 
     private ScheduleJobService scheduleJobService;
 

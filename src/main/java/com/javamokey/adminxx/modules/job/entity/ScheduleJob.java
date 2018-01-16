@@ -16,6 +16,7 @@ import java.io.Serializable;
  * @since 2018-01-14
  */
 public class ScheduleJob implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     /**
@@ -26,6 +27,7 @@ public class ScheduleJob implements Serializable {
     /**
      * 任务id
      */
+    @TableId(value = "job_id", type = IdType.AUTO)
     private Long jobId;
 
     /**
