@@ -37,7 +37,7 @@ public class TestTask {
 		
 		SysUser user = sysUserService.selectById(1L);
 		System.out.println(ToStringBuilder.reflectionToString(user));
-		
+		System.out.println("测试中文乱码问题");
 	}
 	
 	

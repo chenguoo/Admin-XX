@@ -4,21 +4,16 @@ package com.javamokey.adminxx.modules.job.controller;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.javamokey.adminxx.common.annotation.SysLogAnnotation;
-import com.javamokey.adminxx.common.util.PageUtils;
 import com.javamokey.adminxx.common.util.R;
 import com.javamokey.adminxx.common.util.StringUtil;
 import com.javamokey.adminxx.common.validator.ValidatorUtils;
 import com.javamokey.adminxx.modules.job.entity.ScheduleJob;
 import com.javamokey.adminxx.modules.job.service.ScheduleJobService;
-import com.javamokey.adminxx.modules.sys.entity.SysConfig;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
-import org.springframework.stereotype.Controller;
-
-import java.util.List;
 import java.util.Map;
 
 /**

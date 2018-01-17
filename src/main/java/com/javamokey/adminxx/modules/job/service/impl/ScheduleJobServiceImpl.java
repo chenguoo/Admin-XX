@@ -1,6 +1,5 @@
 package com.javamokey.adminxx.modules.job.service.impl;
 
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.javamokey.adminxx.common.util.Constant;
 import com.javamokey.adminxx.modules.job.entity.ScheduleJob;
 import com.javamokey.adminxx.modules.job.mapper.ScheduleJobMapper;
@@ -9,14 +8,12 @@ import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.javamokey.adminxx.modules.job.util.ScheduleUtils;
 import org.quartz.CronTrigger;
 import org.quartz.Scheduler;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 
 /**

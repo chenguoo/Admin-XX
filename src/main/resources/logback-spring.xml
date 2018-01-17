@@ -21,7 +21,7 @@
         <encoder>
             <pattern>${CONSOLE_LOG_PATTERN}</pattern>
             <!--解决控制台输出乱码-->
-            <charset>gbk</charset>
+            <charset>utf-8</charset>
         </encoder>
     </appender>
     <root level="INFO">
