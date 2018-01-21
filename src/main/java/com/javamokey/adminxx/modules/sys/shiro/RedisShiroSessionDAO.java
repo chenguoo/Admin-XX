@@ -11,7 +11,7 @@ import java.io.Serializable;
 import java.util.concurrent.TimeUnit;
 
 /**
- * shiro session dao
+ * shiro session mapping
  *
  * @author Cheney
  * @email sunlightcs@gmail.com

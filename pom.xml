@@ -31,7 +31,7 @@
         <quartz.version>2.3.0</quartz.version>
         <commons-lang3.version>3.3.2</commons-lang3.version>
         <commons.fileupload.version>1.3.3</commons.fileupload.version>
-        <!--<commons.io.version>2.5</commons.io.version>-->
+        <commons.io.version>2.5</commons.io.version>
         <!--<commons.codec.version>1.10</commons.codec.version>-->
         <commons.configuration.version>1.10</commons.configuration.version>
         <fastjson.version>1.2.39</fastjson.version>
@@ -96,9 +96,14 @@
         <!--</dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <scope>test</scope>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
         </dependency>
+        <!--<dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>springloaded</artifactId>
+        </dependency>-->
+
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
@@ -148,12 +153,16 @@
             <artifactId>commons-fileupload</artifactId>
             <version>${commons.fileupload.version}</version>
         </dependency>
-
-        <!--<dependency>-->
-            <!--<groupId>commons-configuration</groupId>-->
-            <!--<artifactId>commons-configuration</artifactId>-->
-            <!--<version>${commons.configuration.version}</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons.io.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-configuration</groupId>
+            <artifactId>commons-configuration</artifactId>
+            <version>${commons.configuration.version}</version>
+        </dependency>
 
         <dependency>
             <artifactId>velocity</artifactId>
@@ -208,6 +217,14 @@
                     <!-- spring-boot:run 中文乱码解决 -->
                     <!--<jvmArguments>-Dfile.encoding=UTF-8</jvmArguments>-->
                 </configuration>
+                <dependencies>
+                    <!-- spring热部署-->
+                    <dependency>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>springloaded</artifactId>
+                        <version>1.2.8.RELEASE</version>
+                    </dependency>
+                </dependencies>
             </plugin>
             <!-- 跳过单元测试 -->
             <plugin>

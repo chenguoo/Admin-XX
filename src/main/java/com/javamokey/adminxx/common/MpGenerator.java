@@ -1,18 +1,9 @@
 package com.javamokey.adminxx.common;
 
 import com.baomidou.mybatisplus.generator.AutoGenerator;
-import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
-import com.baomidou.mybatisplus.generator.config.converts.MySqlTypeConvert;
-import com.baomidou.mybatisplus.generator.config.po.TableInfo;
-import com.baomidou.mybatisplus.generator.config.rules.DbColumnType;
 import com.baomidou.mybatisplus.generator.config.rules.DbType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * 说明:
@@ -77,7 +68,7 @@ public class MpGenerator {
                                 .setModuleName(module)
                                 .setController("controller")
                                 .setEntity("entity")
-                                .setMapper("mapper")
+                                .setMapper("mapping")
                                 .setXml("mapping")
                 ).execute();
     }

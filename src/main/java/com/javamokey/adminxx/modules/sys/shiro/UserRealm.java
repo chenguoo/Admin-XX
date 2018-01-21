@@ -1,7 +1,6 @@
 package com.javamokey.adminxx.modules.sys.shiro;
 
 
-import com.javamokey.adminxx.modules.sys.entity.SysMenu;
 import com.javamokey.adminxx.modules.sys.entity.SysUser;
 import com.javamokey.adminxx.modules.sys.entity.vo.SysMenuVo;
 import com.javamokey.adminxx.modules.sys.mapper.SysMenuMapper;
@@ -46,7 +45,7 @@ public class UserRealm extends AuthorizingRealm {
 
         //系统管理员，拥有最高权限
         if (userId == 1) {
-			List<SysMenuVo> menuList = sysMenuMapper.queryList();
+            List<SysMenuVo> menuList = sysMenuMapper.queryList();
 //            List<SysMenuVo> menuList = sysMenuMapper.selectByMap(new HashMap<String, Object>());
             permsList = new ArrayList<>(menuList.size());
             for (SysMenuVo menu : menuList) {

@@ -5,7 +5,7 @@
 <#include "/header.html">
 </head>
 <body>
-<div id="rrapp">
+<div id="adminApp">
 	<div class="grid-btn">
 		<div class="form-group col-sm-2">
 			<input type="text" class="form-control" v-model="q.tableName" @keyup.enter="query" placeholder="表名">
@@ -17,6 +17,6 @@
     <div id="jqGridPager"></div>
 </div>
 
-<script src="${request.contextPath}/statics/js/modules/gen/generator.js?_${.now?long}"></script>
+<script src="${request.contextPath}/pages/modules/gen/generator.js?_${.now?long}"></script>
 </body>
 </html>

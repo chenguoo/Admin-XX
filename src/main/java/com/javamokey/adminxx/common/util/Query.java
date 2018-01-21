@@ -1,6 +1,7 @@
 package com.javamokey.adminxx.common.util;
 
 
+
 import com.javamokey.adminxx.common.xss.SQLFilter;
 
 import java.util.LinkedHashMap;
@@ -9,7 +10,7 @@ import java.util.Map;
 /**
  * 查询参数
  *
- * @author Cheney
+ * @author chenshun
  * @email sunlightcs@gmail.com
  * @date 2017-03-14 23:15
  */
